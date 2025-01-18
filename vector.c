@@ -7,6 +7,7 @@ int main() {
     int exit = 0;
     int entry = 0;
     int entry2 = 0;
+    int *test;
     Vector *list = vector_create();
 
     while (!exit) {
@@ -23,31 +24,34 @@ int main() {
                 vector_print(list);
                 break;
             case 2:
+                test = malloc(sizeof(int));
                 printf("Value: ");
-                scanf("%d", &entry);
-                vector_append(list, entry);
+                scanf("%d", test);
+                vector_append(list, test);
                 break;
             case 3:
+                test = malloc(sizeof(int));
                 printf("Value: ");
-                scanf("%d", &entry);
+                scanf("%d", test);
                 printf("Index: ");
                 scanf("%d", &entry2);
-                vector_insert(list, entry2, entry);
+                vector_insert(list, entry2, test);
                 break;
             case 4:
+                test = malloc(sizeof(int));
                 printf("Value: ");
-                scanf("%d", &entry);
+                scanf("%d", test);
                 printf("Index: ");
                 scanf("%d", &entry2);
-                vector_set(list, entry2, entry);
+                free(vector_set(list, entry2, test));
                 break;
             case 5:
                 printf("Index: ");
                 scanf("%d", &entry);
-                printf("Index: %d, Value: %d \n", entry, vector_get(list, entry));
+                printf("Index: %d, Value: %p \n", entry, vector_get(list, entry));
                 break;
             case 6:
-                printf("Pop Last: %d \n", vector_pop_last(list));
+                printf("Pop Last: %p \n", vector_pop_last(list));
                 break;
             case 7:
                 printf("Size: %d \n", vector_size(list));
